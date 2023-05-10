@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: "E Learning Platform"
+message: "Hello From local Profile"
