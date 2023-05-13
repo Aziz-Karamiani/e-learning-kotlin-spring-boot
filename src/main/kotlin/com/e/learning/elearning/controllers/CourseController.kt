@@ -3,12 +3,7 @@ package com.e.learning.elearning.controllers
 import com.e.learning.elearning.dto.CourseDTO
 import com.e.learning.elearning.services.CourseService
 import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/v1/courses")
@@ -23,4 +18,11 @@ class CourseController(val courseService: CourseService) {
     fun retrieveAllCourses(): List<CourseDTO> {
         return courseService.retrieveAllCourses()
     }
+
+    @PutMapping("/{course_id}")
+    @ResponseStatus(HttpStatus.OK)
+    fun updateCourse(
+        @RequestBody courseDTO: CourseDTO,
+        @PathVariable("course_id") courseId: Int
+    ): CourseDTO = courseService.updateCourse(courseId, courseDTO)
 }
