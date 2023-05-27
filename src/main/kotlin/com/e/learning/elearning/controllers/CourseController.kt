@@ -32,4 +32,8 @@ class CourseController(val courseService: CourseService) {
         courseService.deleteCourse(courseId)
 
     }
+
+    fun sayHello() {
+        println("Say Hello From CourseController.")
+    }
 }
